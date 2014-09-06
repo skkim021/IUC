@@ -2,6 +2,14 @@
 <div>Last Name: <%= @student.last_name %></div>
 <div>Email: <%= @student.email %></div>
 <div>Password: <%= @student.password %></div>
+<br/>
+
+<h4> Matches </h4>
+<% @schools.each do |school| %>
+	<div>School #<%= school.id %></div>
+<% end %>
+<br/>
+
 
 <p><%= link_to "Edit", edit_student_path %></p>
 <p><%= link_to "Index", students_path %></p>

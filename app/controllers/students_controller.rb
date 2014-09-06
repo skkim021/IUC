@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
 
 	def show
 		@student = Student.find(params[:id])
+		@schools = Match.find_matched_schools(@student)
 	end
 
 	def new

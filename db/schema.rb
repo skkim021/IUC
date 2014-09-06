@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905230432) do
+ActiveRecord::Schema.define(version: 20140906224212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "school_id"
+    t.integer  "student_id"
+  end
+
+  add_index "matches", ["school_id"], name: "index_matches_on_school_id", using: :btree
+  add_index "matches", ["student_id"], name: "index_matches_on_student_id", using: :btree
+
+  create_table "schools", force: true do |t|
+    t.string   "name"
+    t.string   "picture"
+    t.string   "location"
+    t.string   "tips"
+    t.string   "tuition"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "students", force: true do |t|
     t.string   "user_type"
