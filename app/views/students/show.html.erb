@@ -1,0 +1,8 @@
+<div>First Name: <%= @student.first_name %></div>
+<div>Last Name: <%= @student.last_name %></div>
+<div>Email: <%= @student.email %></div>
+<div>Password: <%= @student.password %></div>
+
+<p><%= link_to "Edit", edit_student_path %></p>
+<p><%= link_to "Index", students_path %></p>
+<p><%= link_to "Delete", @student, method: "delete" %></p>
