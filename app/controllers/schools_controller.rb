@@ -1,32 +1,28 @@
 class SchoolsController < ApplicationController
-	before_action :set_school, only: [:show, :edit, :update, :destroy]
 
 def index
 	@schools = School.all
 end
 
 def show
+   @school = School.find(params[:id])
 end
 
 def new
 	@school = School.new
 end
 
-def edit
-end 
-
 def create
 	@school = School.new(school_params)
-  respond_to do |format|
+
 	if @school.save
-        format.html { redirect_to @school, notice: 'School was successfully created.' }
-        format.json { render :show, status: :created, location: @school }
-      else
-        format.html { render :new }
-        format.json { render json: @school.errors, status: :unprocessable_entity }
-      end
-    end
+     redirect_to @school
+   else
+    render 'new'
+
   end
+
+end
 
 # 		sign_in @school
 # 		redirect_to @school
@@ -34,42 +30,49 @@ def create
 # 		render :new
 # 	end
 # end
+def edit
+  @school = School.find(params[:id])
+end 
 
 def update
-   respond_to do |format|
-      if @school.update(school_params)
-        format.html { redirect_to @school, notice: 'School was successfully updated.' }
-        format.json { render :show, status: :ok, location: @school }
-      else
-        format.html { render :edit }
-        format.json { render json: @school.errors, status: :unprocessable_entity }
-      end
+  @school = School.find(params[:id])
+    if @school.update_attributes(school_params)
+      redirect_to @school
+    else
+      render 'edit'
     end
   end
+
+  #  respond_to do |format|
+  #     if @school.update_attributes(school_params)
+  #       format.html { redirect_to @school, notice: 'School was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @school }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @school.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
 def destroy 
-
+ @school = School.find(params[:id])
  @school.destroy
-    respond_to do |format|
-      format.html { redirect_to schools_url, notice: 'School was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+redirect_to schools_path
+end
 
-# 	if @school.destroy
-# 		render 'schools/root'
-# 	else
-# 		render 'show'
-# 	end
-# end
+  #   respond_to do |format|
+  #     format.html { redirect_to @school, notice: 'School was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
 private 
 def school_params
 	params.require(:school).permit(:name, :email, :picture, :location, :tips, :tuition)
 end 
 
-def find_school
-	@school = School.find(params[:id])
-end
+# def find_school
+# 	@school = School.find(params[:id])
+# end
 
 end
