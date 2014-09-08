@@ -9,7 +9,10 @@
   <strong>Email:</strong>
   <%= @school.email %>
 </p>
-
+<p>
+  <strong>Password:</strong>
+  <%= @school.password %>
+</p>
 <p>
   <strong>Picture:</strong>
   <%= @school.picture %>
@@ -27,6 +30,11 @@
   <%= @school.tuition %>
 </p>
 
+<h4> Matches </h4>
+<% @students.each do |student| %>
+  <div>Student #<%= student.id %></div>
+<% end %>
+<br/>
 
 <%= link_to 'Edit', edit_school_path(@school) %> |
 <%= link_to 'Back', schools_path %>

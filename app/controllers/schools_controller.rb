@@ -1,11 +1,14 @@
 class SchoolsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
 def index
-	@schools = School.all
+	@schools = School.search(params[:search]).order(sort_column + " " + sort_direction)
 end
 
 def show
    @school = School.find(params[:id])
+   #what does this argument do?
+   @students = Match.find_matched_students(@school)
 end
 
 def new
@@ -68,8 +71,17 @@ end
 
 private 
 def school_params
-	params.require(:school).permit(:name, :email, :picture, :location, :tips, :tuition)
+	params.require(:school).permit(:name, :email, :picture, :location, :tips, :tuition, :password)
 end 
+
+def sort_column
+  School.column_names.include?(params[:sort]) ? params[:sort] : "name"
+end
+
+def sort_direction
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+end
+
 
 # def find_school
 # 	@school = School.find(params[:id])
