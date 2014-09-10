@@ -39,9 +39,12 @@ class StudentsController < ApplicationController
 
 	def destroy
 		@student = Student.find(params[:id])
-		# Also delete all match instances associated with student.
-		@student.destroy
-		redirect_to students_path
+		if @student.destroy
+			# Also delete all match instances associated with student.
+			redirect_to students_path
+		else 
+			render 'show'
+		end 
 	end
 
 	private

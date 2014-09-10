@@ -18,3 +18,18 @@ describe 'Student' do
 			end
 		end
 
+		# describe 'validations:' do
+
+		# 	context 'when first_name is missing'
+		# 	it 'it is not valid' do
+		# 		student = Student.new(@valid_attributes.merge(first_name: nil))
+		# 		expect(student).not_to be_valid
+		# 	end
+		# end
+
+		describe 'the homepage', :type => :feature do
+			it 'shows me the right page for site root' do
+				visit '/students'
+
+			end 
+		end 
