@@ -11,7 +11,7 @@ describe 'Student' do
 			}
 		end
 
-		describe 'when all attributes are valid'
+		describe 'when the attributes are valid'
 			it 'is valid' do
 				student = Student.new(@valid_attributes)
 				expect(student).to be_valid 
@@ -26,6 +26,31 @@ describe 'Student' do
 		# 		expect(student).not_to be_valid
 		# 	end
 		# end
+
+		# describe 'validations:' do
+		# 	context 'when last_name is missing'
+		# 	it 'it is not valid' do
+		# 		student = Student.new(@valid_attributes.merge(last_name: nil))
+		# 		expect(student).not_to be_valid
+		# 	end
+		# end
+
+		# describe 'validations:' do
+		# 	context 'when email is missing'
+		# 	it 'it is not valid' do
+		# 		student = Student.new(@valid_attributes.merge(last_name: nil))
+		# 		expect(student).not_to be_valid
+		# 	end 
+		# end
+
+		# describe 'validations:' do
+		# 	context 'when password is missing'
+		# 	it 'it is not valid' do
+		# 		student = Student.new(@valid_attributes.merge(last_name: nil))
+		# 		expect(student).not_to be_valid
+		# 	end
+		# end
+
 
 		describe 'the homepage', :type => :feature do
 			it 'shows me the right page for site root' do
