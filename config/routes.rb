@@ -5,6 +5,18 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  # Schools API Requests
+  get 'api/schools' => 'schools#api_index'
+  get 'api/schools/:id' => 'schools#api_show'
+  post 'api/schools' => 'schools#create'
+
+  # Students API Requests
+  get 'api/students' => 'students#api_index'
+  get 'api/students/:id' => 'students#api_show'
+  post 'api/students' => 'students#create'
+
+
+  # Admin Requests
   resources :students
   resources :schools
   

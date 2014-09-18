@@ -1,6 +1,15 @@
 class StudentsController < ApplicationController
 	helper_method :sort_column, :sort_direction
 	
+	def api_index
+	  @students = Student.search(params[:search]).order(sort_column + " " + sort_direction)
+	end
+
+	def api_show
+		@student = Student.find(params[:id])
+		@schools = Match.find_matched_schools(@student)
+	end
+
 	def index
 		@students = Student.search(params[:search]).order(sort_column + " " + sort_direction)
 	end
