@@ -1,14 +1,23 @@
 class StudentsController < ApplicationController
 	helper_method :sort_column, :sort_direction
 	
+	### API CONTROLLERS ###
 	def api_index
-	  @students = Student.search(params[:search]).order(sort_column + " " + sort_direction)
+	  @students = Student.order("id ASC")
 	end
 
 	def api_show
 		@student = Student.find(params[:id])
 		@schools = Match.find_matched_schools(@student)
 	end
+
+	def api_update
+		@student = Student.find(params[:id])
+		if @student.update_attributes(student_params)
+			redirect_to api_students_path(@student)
+		end
+	end
+	### API CONTROLLERS ###
 
 	def index
 		@students = Student.search(params[:search]).order(sort_column + " " + sort_direction)

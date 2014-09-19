@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
 def api_index
-  @schools = School.search(params[:search]).order(sort_column + " " + sort_direction)
+  @schools = School.order("id ASC")
 end
 
 def api_show

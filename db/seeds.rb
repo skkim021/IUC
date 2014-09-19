@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+School.create([
+	{ name: 'Harvard', picture: 'http://harvardpolitics.com/blog/wp-content/uploads/2014/04/Seo-Endpaper-Picture-4-23.jpg' },
+	{ name: 'UCLA', picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJVgWzBuYgt6yimgyd0hKEm8hsDNLeOfmg3DE5Z_yK90VIE9ou' },
+	{ name: 'Brown', picture: 'http://hcigrad.com/images/schools/brown.jpg'},
+	{ name: 'Stanford', picture: 'http://stanford.edu/about/images/intro_about.jpg'}
+])

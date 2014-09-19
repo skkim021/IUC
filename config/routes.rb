@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'api/students' => 'students#api_index'
   get 'api/students/:id' => 'students#api_show'
   post 'api/students' => 'students#create'
+  patch 'api/students/:id' => 'students#api_update'
 
 
   # Admin Requests
