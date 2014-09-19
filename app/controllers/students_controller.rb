@@ -14,7 +14,6 @@ class StudentsController < ApplicationController
 	def api_update
 		@student = Student.find(params[:id])
 		if @student.update_attributes(student_params)
-			redirect_to api_students_path(@student)
 		end
 	end
 	### API CONTROLLERS ###
