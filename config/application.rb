@@ -26,5 +26,23 @@ module Iucapp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # config.action_dispatch.default_headers = {
+    #     'Access-Control-Allow-Origin' => '*',
+    #     'Access-Control-Allow-Methods' => 'POST, PUT, DELETE, GET, OPTIONS',
+    #     'Access-Control-Request-Method' => '*',
+    #     'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, content-type, Accept, Authorization',
+    #     'Access-Control-Request-Headers' => '*',
+    #     'Access-Control-Max-Age' => "1800"
+    # }
+
+
+    config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
+        allow do
+            origins '*'
+            resource '*', :headers => :any, :methods => [:get, :post, :options, :patch]
+        end
+    end
+
   end
 end
